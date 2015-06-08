@@ -40,7 +40,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Aardappel</div>
+				<div class="title">Say Hello To My Little Friend</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
 			</div>
 		</div>
