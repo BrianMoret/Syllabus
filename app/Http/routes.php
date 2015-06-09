@@ -2,6 +2,9 @@
 
 //Main
 Route::get('/', 'MainController@index');
+Route::get('createteacher', 'createteachercontroller@index');
+Route::post('createteacher', 'createteachercontroller@store');
+
 
 //Syllabus
 Route::get('create', 'SyllabusController@create');
