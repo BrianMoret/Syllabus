@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSyllabusTable extends Migration {
+class CreateSyllabus extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,11 @@ class CreateSyllabusTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('syllabus_items', function(Blueprint $table)
+		Schema::create('syllabus', function(Blueprint $table)
 		{
 			$table->increments('id');
             $table->string('title');            
-            $table->text('body');
 			$table->integer('created_by');
-			$table->integer('syllabus_id');
             $table->timestamps();
 		});
 	}
@@ -30,7 +28,7 @@ class CreateSyllabusTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('syllabus_items');
+		Schema::drop('syllabus');
 	}
 
 }

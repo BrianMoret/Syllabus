@@ -23,7 +23,7 @@
 			<td>
 				<a href = "{{action('SyllabusController@delete',[$syllabus_item->id])}}"><span class = "glyphicon glyphicon-remove"></span></a>
 			</td>
-		</article>
+		</tr>
 	@endforeach
-
+	</table>
 @stop
