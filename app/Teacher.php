@@ -9,6 +9,6 @@ class Teacher extends Model {
 	'name', 
 	'email',
 	'password',
-    'type'  '2';
+    'type'
 	];
 }
