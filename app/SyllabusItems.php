@@ -10,9 +10,12 @@ class SyllabusItems extends Model {
 		'title',
 		'body',
 		'created_by',
-		'syllabus_id'
+		'syllabi_id'
 	];
 	
-
+	public function syllabus()
+	{
+		return $this->belongsTo('App\Syllabi', 'syllabi_id', 'id');
+	}
 
 }

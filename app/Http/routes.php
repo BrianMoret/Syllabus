@@ -21,8 +21,8 @@ Route::get('syllabus/{id}', 'SyllabusController@overviewItems');
 //Syllabusitems
 
 Route::get('overview/items/{id}', 'SyllabusController@overviewItems');
-Route::get('item/create', 'SyllabusController@createItem');
-Route::post('item/create', 'SyllabusController@saveSyllabusItem');
+Route::get('item/create/{id}', 'SyllabusController@createItem');
+Route::post('item/create/{id}', 'SyllabusController@saveSyllabusItem');
 
 Route::get('item/detail/{id}', 'SyllabusController@detailItem');
 Route::get('item/edit/{id}', 'SyllabusController@editItem');

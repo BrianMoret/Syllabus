@@ -3,14 +3,14 @@
 @section('title', 'Overview')
 
 @section('content')
-	<h1>Syllabus items</h1>
+	<h1>Syllabus items in {{$syllabi->title}}</h1>
 	
 	<hr/>
-	<p><a href = "/syllabus/create"><span class = "btn btn-primary">Create new syllabus item</span></a></p>
+	<p><a href = "/item/create/{{$syllabi->id}}"><span class = "btn btn-primary">Create new syllabus item</span></a></p>
 	<p><a href = "/overview"><span class = "btn btn-primary">Return to overview</span></a></p>
 	<table class = "table table-hover">
 	<tr><th>Title</th><th colspan = 3>Functions</th></tr>
-	@foreach($syllabus_items as $syllabus_item)
+	@foreach($syllabi->items as $syllabus_item)
 		<tr>
 			<td>
 				<a href = "{{action('SyllabusController@detailItem',[$syllabus_item->id])}}">{{$syllabus_item->title}}</a>

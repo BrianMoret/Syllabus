@@ -18,13 +18,11 @@
 		{!! Form::label('body', 'Body:')!!}
 		{!! Form::textarea('body', null, ['class' => 'form-control'])!!}
 	</div>
-
+	
 	<div class = "form-group">
 		{!! Form::label('syllabus_id', 'Syllabus:')!!}
-		@foreach($syllabi as $syllabus=>$value)
-			<option value = "id" name
-		@endforelse
-		{!! Form::select('syllabus_id', null, ['class' => 'form-control'])!!}
+
+		{!! Form::select('syllabus_id', $syllabi, $id, ['class' => 'form-control'] )!!}
 	</div>
 	
 	<div class = "form-group">

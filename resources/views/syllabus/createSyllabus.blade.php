@@ -4,7 +4,7 @@
 
 @section('content')
 	<h1>Create new syllabus</h1>
-	
+	<p><a href = "/overview"><span class = "btn btn-primary">Return to overview</span></a></p>
 	<hr/>
 
 	{!!Form::open()!!}

@@ -18,7 +18,7 @@ class CreateSyllabusTable extends Migration {
             $table->string('title');            
             $table->text('body');
 			$table->integer('created_by');
-			$table->integer('syllabus_id');
+			$table->integer('syllabi_id');
             $table->timestamps();
 		});
 	}

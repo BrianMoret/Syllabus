@@ -52,21 +52,37 @@ class SyllabusController extends Controller {
 	
 	public function overviewItems($id)
 	{
-		$syllabus_items = SyllabusItems::where('syllabus_id', '=', $id)->latest()->get();
-		return view('syllabus.overviewItems', compact('syllabus_items'));
-	}
-	
-	public function createItem()
-	{
-		$syllabi = Syllabi::all();
-		return view('syllabus.createItem', compact('syllabi'));
-	}
-	
-	public function saveSyllabusItem()
-	{
-		SyllabusItems::create(Request::all());
+		//$syllabus_items = SyllabusItems::where('syllabi_id', '=', $id)->latest()->get();
+		//$syllabusTitle = "Lorum";//$syllabus_items->syllabus()->title;
 		
-		return redirect('/overview');
+		$syllabi = Syllabi::find($id);
+		
+		//return view('syllabus.overviewItems', compact('syllabus_items'))->with('syllabus_id', $id)->with('syllabusTitle',$syllabusTitle);
+		return view('syllabus.overviewItems', compact('syllabi'));
+	}
+	
+	public function createItem($id)
+	{
+		$syllabi = Syllabi::all()->lists('title', 'id');
+		return view('syllabus.createItem', compact('syllabi'))->with('id', $id);
+	}
+	
+	public function saveSyllabusItem($id)
+	{
+		
+		//SyllabusItems::create(Request::all());
+		// $data = Request::input('title','body','syllabi_id');
+		// $data['created_by'] = Auth::User()->id;
+		// SyllabusItems::create($data);
+		$Syllabi = new SyllabusItems;
+		$Syllabi->title = Request::Input("title");
+		$Syllabi->body = Request::Input("body");
+		$Syllabi->syllabi_id = Request::Input("syllabus_id");
+		$Syllabi->created_by = Auth::User()->id;
+		$Syllabi->save();
+		
+		
+		return redirect('/overview/items/'. $id);
 	}
 
 	public function detailItem($id)

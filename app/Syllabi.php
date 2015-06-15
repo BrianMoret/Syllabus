@@ -15,6 +15,11 @@ class Syllabi extends Model {
     {
         return $this->hasOne('App\User', 'id', 'created_by');
     }
+	public function items()
+	{
+		return $this->hasMany('App\SyllabusItems');
+	}
+	
 	
 	
 }
