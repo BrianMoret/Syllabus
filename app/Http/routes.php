@@ -5,16 +5,29 @@ Route::get('/', 'MainController@index');
 Route::get('createteacher', 'createteachercontroller@index');
 Route::post('createteacher', 'createteachercontroller@store');
 
+//Syllabi
 
-//Syllabus
-Route::get('create', 'SyllabusController@create');
-Route::get('home', 'SyllabusController@overview');
-Route::post('create', 'SyllabusController@saveSyllabus');
+Route::get('overview', 'SyllabusController@overview');
+Route::get('syllabus/create', 'SyllabusController@createSyllabi');
+Route::post('syllabus/create', 'SyllabusController@saveSyllabi');
 
-Route::get('detail/{id}', 'SyllabusController@detail');
-Route::get('edit/{id}', 'SyllabusController@edit');
-Route::get('link/{id}', 'SyllabusController@link');
-Route::get('delete/{id}', 'SyllabusController@delete');
+Route::get('syllabus/edit/{id}', 'SyllabusController@editSyllabi');
+Route::get('syllabus/link/{id}', 'SyllabusController@linkSyllabi');
+Route::get('syllabus/delete/{id}', 'SyllabusController@deleteSyllabi');
+Route::get('syllabus/{id}', 'SyllabusController@overviewItems');
+
+
+
+//Syllabusitems
+
+Route::get('overview/items/{id}', 'SyllabusController@overviewItems');
+Route::get('item/create', 'SyllabusController@createItem');
+Route::post('item/create', 'SyllabusController@saveSyllabusItem');
+
+Route::get('item/detail/{id}', 'SyllabusController@detailItem');
+Route::get('item/edit/{id}', 'SyllabusController@editItem');
+Route::get('item/link/{id}', 'SyllabusController@linkItem');
+Route::get('item/delete/{id}', 'SyllabusController@deleteSyllabusItem');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

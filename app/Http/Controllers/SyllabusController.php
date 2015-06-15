@@ -1,50 +1,94 @@
 <?php namespace App\Http\Controllers;
 
-use App\Syllabus;
+use App\SyllabusItems;
+use App\Syllabi;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DB;
 use Carbon\Carbon;
 use Request;
+use Auth;
 
 class SyllabusController extends Controller {
 
-	public function create()
-	{
-		return view('syllabus.create');
-	}
-	
 	public function overview()
 	{
-		$syllabus_items = Syllabus::latest()->get();
-		return view('syllabus.overview', compact('syllabus_items'));
+		$syllabi = Syllabi::latest()->get();
+		return view('syllabus.overview', compact('syllabi'));
 	}
 	
-	public function saveSyllabus()
+	public function createSyllabi()
 	{
-		Syllabus::create(Request::all());
+		return view('syllabus.createSyllabus');
+	}
+	
+	public function saveSyllabi()
+	{
+		$Syllabi = new Syllabi;
+		$Syllabi->title = Request::Input("title");
+		$Syllabi->created_by = Auth::User()->id;
+		$Syllabi->save();
+		return redirect('/overview');
+	}
+
+	public function editSyllabi($id)
+	{
 		
-		return redirect('syllabus.overview');
+	}
+	public function linkSyllabi($id)
+	{
+		
 	}
 	
-	public function detail($id)
+	public function deleteSyllabi($id)
 	{
-		$syllabus_item = Syllabus::findOrFail($id);
+		Syllabi::where('id', '=', $id)->delete();
+		//Delete item links also!!!!
+		return redirect('/overview');
+	}
+	
+	
+	//ITEMS
+	
+	public function overviewItems($id)
+	{
+		$syllabus_items = SyllabusItems::where('syllabus_id', '=', $id)->latest()->get();
+		return view('syllabus.overviewItems', compact('syllabus_items'));
+	}
+	
+	public function createItem()
+	{
+		$syllabi = Syllabi::all();
+		return view('syllabus.createItem', compact('syllabi'));
+	}
+	
+	public function saveSyllabusItem()
+	{
+		SyllabusItems::create(Request::all());
+		
+		return redirect('/overview');
+	}
+
+	public function detailItem($id)
+	{
+		$syllabus_item = SyllabusItems::findOrFail($id);
 		
 		return view('syllabus.detail', compact('syllabus_item'));
 		
 	}
-	public function edit($id)
+	public function editItem($id)
 	{
 		
 	}
-	public function link($id)
+	public function linkItem($id)
 	{
 		
 	}
 	
-	public function delete($id)
+	public function deleteSyllabusItem($id)
 	{
-		
+		SyllabusItems::where('id', '=', $id)->delete();
+		return redirect('/overview');
 	}
 	
 	
