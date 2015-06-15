@@ -22,8 +22,8 @@
 	<div class = "form-group">
 		{!! Form::label('syllabus_id', 'Syllabus:')!!}
 		@foreach($syllabi as $syllabus=>$value)
-			<option value = "id" name
-		@endforelse
+			<option value = "{{$value}}" name = "{{$value}}"/>
+		@endforeach
 		{!! Form::select('syllabus_id', null, ['class' => 'form-control'])!!}
 	</div>
 	
